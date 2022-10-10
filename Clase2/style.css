@@ -1,0 +1,12 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+#grid{
+    height: 200px;
+    background-color: lightcoral;
+}

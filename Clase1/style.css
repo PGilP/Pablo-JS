@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+}
+
+/* body{
+    margin: 0;
+} */
+
+#grid{
+    background: aliceblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 500px;
+
+}
+
+.column{
+    border: 1px solid #000;
+    height: 100px;
+    width: 100px;
+    background: red;
+}

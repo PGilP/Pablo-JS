@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="tittle">
+            <h1>Conversor de monedas</h1>
+        </div>
+        <div class="datos">
+            <label for="">Introduce €</label><input id="valorIntroducido" onchange="convertir()" type="number" value="0">
+            <!-- <button>Convertir</button> -->
+        </div>
+        <div class="resultado">
+            <h4>Resultado</h4>
+            <div class="conversion">
+                <div class="valor dolar">0</div>
+                <div class="moneda">$</div>
+            </div>
+            <div class="conversion">
+                <div class="valor libra">0</div>
+                <div class="moneda">£</div>
+            </div>
+            <div class="conversion">
+                <div class="valor yen">0</div>
+                <div class="moneda">¥</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

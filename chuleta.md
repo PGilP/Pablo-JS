@@ -58,3 +58,25 @@ Podemos añadir texto NO HTML sutituyendo TODO el contenido que esté dentro del
     nodoSaludo.innerText = "NUEVO CONTENIDO";
 ```
 
+
+## FOR
+Trozo de código que se repite un NÚMERO DETERMINADO DE VECES
+
+```js
+let str_string = '*';
+
+for(let i; i < 10 ; i++){
+    console.log( 'Vuelta:', i );
+    //Se repite pero varía i
+    str_string = str_string + '*';
+}//Se destruye la i
+```
+### CASO Especial: Recorrer una lista
+```js
+let frutas = ['sandía', 'manzana', 'pera'];
+
+for(let i; i < frutas.lenght ; i++){
+    console.log(frutas[i]);
+
+}//Se destruye la i
+```

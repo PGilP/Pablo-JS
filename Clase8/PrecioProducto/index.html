@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <label for="precioIntroducido">Precio producto:</label> <input onchange="calcularPrecio()" type="number" name="precioIntroducido" id="precioIntroducido">
+    <label for="cupon">Introduce cupón</label> <input type="text" name="cupon" id="cupon">
+    <!-- <button onclick="calcularPrecio()">Calcular Precio</button> -->
+    <div id="resultado">
+        <p id="precioBase">Precio base: <span></span></p>
+        <p id="descuento">Precio con descuento: <span></span></p>
+        <p id="impuestos">Impuestos: <span></span></p>
+        <p id="envio">Gastos de envío: <span></span></p>
+        <p id="total">Total: <span></span></p>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

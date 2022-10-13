@@ -42,6 +42,8 @@ console.log( nodoBtnAnimate );
 ## Pintar en la web
 ### innerHTML
 Podemos crear nuevo contenido HTML sutituyendo TODO el contenido que esté dentro del Nodo
+
+NOTA: Necesita que la cadena HTML esté completa, si detecta la falta del cierre de una etiqueta LA CIERRA
 ```js
     let nodoSaludo = document.querySelector('#saludo');
     //Cuando queramos sustituir TODO el contenido
@@ -49,6 +51,15 @@ Podemos crear nuevo contenido HTML sutituyendo TODO el contenido que esté dentr
     //Cuando queramos añadir contenido SIN BORRAR el anterior
     nodoSaludo.innerHTML = nodoSaludo.innerHTML + "<p>OTRO NUEVO CONTENIDO</p>"
 
+```
+### Template String
+Comillas torcidas
+```js
+nodoUl.innerHTML = ´<ul>
+                        <li>${frutas[0]}</li>
+                        <li>${frutas[1]}</li>
+                        <li>${frutas[2]}</li>
+                    </ul>´
 ```
 
 ### innerText

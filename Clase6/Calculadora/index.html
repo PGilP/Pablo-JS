@@ -9,31 +9,31 @@
 </head>
 <body>
     <div class="calculadora">
-        <div class="resultado"></div>
+        <div id="resultado"></div>
         
-        <div class="boton operacionesAlternativas borrar">C</div>
+        <div onclick="resetear()" class="boton operacionesAlternativas" id="borrar">C</div>
         <div class="boton operacionesAlternativas signo">+/-</div>
         <div class="boton operacionesAlternativas porCiento">%</div>
-        <div class="boton operacion" id="dividir">÷</div>
+        <div onclick="operar('dividir')" class="boton operacion" id="dividir">÷</div>
         
-        <div class="boton numero" value="7">7</div>
-        <div class="boton numero" value="8">8</div>
-        <div class="boton numero" value="9">9</div>
-        <div class="boton operacion" value="multiplicar">X</div>
+        <div onclick="construirNumero(7)" class="boton numero">7</div>
+        <div onclick="construirNumero(8)" class="boton numero">8</div>
+        <div onclick="construirNumero(9)" class="boton numero">9</div>
+        <div onclick="operar('multiplicar')" class="boton operacion" value="multiplicar">X</div>
         
-        <div class="boton numero" value="4">4</div>
-        <div class="boton numero" value="5">5</div>
-        <div class="boton numero" value="6">6</div>
-        <div class="boton operacion" value="restar">-</div>
+        <div onclick="construirNumero(4)" class="boton numero">4</div>
+        <div onclick="construirNumero(5)" class="boton numero">5</div>
+        <div onclick="construirNumero(6)" class="boton numero">6</div>
+        <div onclick="operar('restar')" class="boton operacion" value="restar">-</div>
         
-        <div class="boton numero" value="3">3</div>
-        <div class="boton numero" value="2">2</div>
-        <div class="boton numero" value="1">1</div>
-        <div class="boton operacion" value="sumar">+</div>
+        <div onclick="construirNumero(3)" class="boton numero">3</div>
+        <div onclick="construirNumero(2)" class="boton numero">2</div>
+        <div onclick="construirNumero(1)" class="boton numero">1</div>
+        <div onclick="operar('sumar')" class="boton operacion" value="sumar">+</div>
         
-        <div class="boton numero agrandar" value="0">0</div>
+        <div onclick="construirNumero(0)" class="boton numero agrandar">0</div>
         <div class="boton numero coma" value="coma">,</div>
-        <div class="boton operacion igual" value="igual">=</div>
+        <div onclick="igual()" class="boton operacion igual" value="igual">=</div>
 
     </div>
 

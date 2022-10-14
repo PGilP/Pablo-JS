@@ -19,23 +19,32 @@ function construirNumero(str){
 }
 
 function operar(operacion){
+    debugger;
     contadorOperaciones++;
-    console.log('Has hecho'+ contadorOperaciones+ 'operaciones');
-    operacionActual = operacion;
+    console.log('Antes de asignar: ' ,'operacion-->',operacion, '  operacionActual-->',operacionActual);
+    
     // console.log('Operando al pinchar en una operacion-->',operando);
     // console.log('Operador al pinchar en una operacion-->',operador);
     // console.log('Operacion al pinchar en una operacion-->',operacion);
-    
     elegirOperandoOperador();
+
+    operacionActual = operacion;
+
+    console.log('Despues de asignar: ' ,'operacion-->',operacion, '  operacionActual-->',operacionActual,'  operando-->', operando, '   contadorOperaciones-->',contadorOperaciones,'  operador-->',operador);
+    
     numeroConstruido = '';
-    if(contadorOperaciones !== 1 && operando !== 0){
+    if(contadorOperaciones !== 1 /* && operando !== 0 */){
         if(contadorOperaciones === 2){
+            
             console.log('segundaOperacion', operacionInicial);
-            elegirOperacion(operacionInicial);
+            ejecutarOperacion(operacionInicial);
         }else{
-            elegirOperacion(operacionActual);
+            console.log("OPERACIOOOOOOOOOOOOOOOOOON");
+            //Aqui falta algun condicional que haga que se ejecute la operacion anterior en algun momento que no he llegado a identificar
+            ejecutarOperacion(operacionActual);
         }
-    }else{
+    }else {
+        console.log("OPERACIOOOOOOOOOOOOOOOOOON RESTOOOOOO");
         operacionInicial = operacion;
     }
 }
@@ -43,18 +52,22 @@ function operar(operacion){
 function igual(){
     elegirOperandoOperador();
     console.log(operacionActual);
-    elegirOperacion(operacionActual);
+    ejecutarOperacion(operacionActual);
 }
 
 function elegirOperandoOperador(){
     if(operador === 0){
         operador = Number(numeroConstruido);
     }else if(operando === 0){
+        console.log("Asignando operando");
         operando = Number(numeroConstruido);
+        console.log('Operando-->',operando);
     }
 }
 
-function elegirOperacion(operacion){
+function ejecutarOperacion(operacion){
+    debugger;
+    console.log('Operacion que voy a ejecutar-->', operacion);
     switch (operacion) {
         case 'sumar':
             sumar();
@@ -78,8 +91,9 @@ function sumar(){
     // console.log('Entramos a sumar');
     // console.log('operando -->',operando, '  operador -->',operador);
     
+    console.log('Operando antes de sumar-->',operando);
     let resultado = operador + operando;
-    pintaResultadoDecimales(resultado);
+    pintaResultado(resultado);
 
     limpiarOperando();
     // console.log('operador despues de sumar -->',operador);
@@ -91,10 +105,9 @@ function sumar(){
 function restar(){
     // console.log('Entramos a restar');
     // console.log('operando -->',operando, '  operador -->',operador);
-    nodoResultado.innerHTML = (operador - operando).toFixed(2);
 
     let resultado = operador - operando;
-    pintaResultadoDecimales(resultado);
+    pintaResultado(resultado);
 
     limpiarOperando();
 
@@ -108,7 +121,6 @@ function dividir(){
     // console.log('Entramos a dividir');
 
     // console.log('operando -->',operando, '  operador -->',operador);
-    nodoResultado.innerHTML = (operador / operando).toFixed(2);
 
     let resultado = operador / operando;
     pintaResultadoDecimales(resultado);
@@ -125,10 +137,9 @@ function multiplicar(){
     // console.log('Entramos a multiplicar');
 
     // console.log('operando -->',operando, '  operador -->',operador);
-    nodoResultado.innerHTML = (operador * operando).toFixed(2);
 
     let resultado = operador * operando;
-    pintaResultadoDecimales(resultado);
+    pintaResultado(resultado);
 
     limpiarOperando();
 
@@ -138,7 +149,7 @@ function multiplicar(){
     console.log('Salimos de multiplicar');
 }
 
-function pintaResultadoDecimales(resultado){
+function pintaResultado(resultado){
     if(esEntero(resultado)){
         nodoResultado.innerHTML = (resultado);
         operador = Number((resultado))

@@ -42,6 +42,15 @@ function calcularEnvio(precio){
     }else{
         return 0;
     }
+
+    //Clausula de guarda
+    // Limpieza de código
+    if(! autenticado){
+        return 'Invalido';
+    }
+    //Codigo normal
+    return 0;
+
 }
 
 function validarCupon(precio,cuponText){

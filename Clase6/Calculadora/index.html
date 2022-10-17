@@ -11,15 +11,15 @@
     <div class="calculadora">
         <div id="resultado"></div>
         
-        <div onclick="resetear()" class="boton operacionesAlternativas" id="borrar">C</div>
-        <div class="boton operacionesAlternativas signo">+/-</div>
+        <div onclick="resetear()" class="boton operacionesAlternativas">C</div>
+        <div onclick="construirNumero('signo')" class="boton operacionesAlternativas signo">+/-</div>
         <div class="boton operacionesAlternativas porCiento">%</div>
         <div onclick="operar('dividir')" class="boton operacion" id="dividir">÷</div>
         
         <div onclick="construirNumero(7)" class="boton numero">7</div>
         <div onclick="construirNumero(8)" class="boton numero">8</div>
         <div onclick="construirNumero(9)" class="boton numero">9</div>
-        <div onclick="operar('multiplicar')" class="boton operacion" value="multiplicar">X</div>
+        <div onclick="operar('multiplicar')" class="boton operacion" value="multiplicar">x</div>
         
         <div onclick="construirNumero(4)" class="boton numero">4</div>
         <div onclick="construirNumero(5)" class="boton numero">5</div>

@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+h1{
+    margin: auto;
+    text-align: center;
+}
+
+.containerCards{
+    margin: auto 50px 20px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.alumnoCard{
+    width: 300px;
+    border: 1px solid black;
+}
+
+.formCreacionAlumno{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.formCreacionAlumno > * {
+    text-align: center;
+    width: 20%;
+}
+
+.formCreacionAlumno label{
+    margin-top: 10px;
+}
+
+.formCreacionAlumno #boton{
+    margin-top: 10px;
+    width: 5%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: lightgreen;
+    cursor: pointer;
+}

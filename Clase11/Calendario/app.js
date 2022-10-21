@@ -43,17 +43,16 @@ function rellenarCalendario(anio){
     }
 
     function rellenarMes(diasMes,primerDia){
-        console.log('PrimerDia-->',primerDia);
         let diasHTML = '';
         for (let i = 0; i < diasMes; i++) {
             if(i === 0){
                 if(primerDia === 0){
-                    diasHTML += `<div class="primerDia" style="grid-column-start: ${7};"> <time datetime="">${i+1}</div>`;
+                    diasHTML += `<div class="primerDia" style="grid-column-start: ${7};"> <time datetime="">${i+1}</time></div>`;
                 }else{
-                    diasHTML += `<div class="primerDia" style="grid-column-start: ${primerDia};"> <time datetime="">${i+1}</div>`;
+                    diasHTML += `<div class="primerDia" style="grid-column-start: ${primerDia};"> <time datetime="">${i+1}</time></div>`;
                 }
             }else{
-                diasHTML += `<div>${i+1}</div>`;
+                diasHTML += `<div><time datetime="">${i+1}</time></div>`;
             }
         }
         return diasHTML;

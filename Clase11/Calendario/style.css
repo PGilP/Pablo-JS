@@ -60,6 +60,6 @@ body{
 }
 
 
-.numeroDia div:first-child{
-    
+.arrow{
+    cursor: pointer;
 }

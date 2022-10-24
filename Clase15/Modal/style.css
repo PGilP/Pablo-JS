@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+.difuminado{
+    background-color: rgba(0,0,0, 0.8);
+}
+
+.openModal{
+    position: relative;
+    z-index: 100;
+    margin: 100px;
+}
+
+.container{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+}
+
+.modal{
+    margin: auto;
+    position: absolute;
+    top: -500px;
+    left: 500px;
+    z-index: 0;
+    width: 400px;
+    aspect-ratio: 2/1.5;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: end;
+    align-items: flex-end;
+}
+.salida{
+    animation: salida 1s ;
+    animation-fill-mode: forwards;
+}
+
+.vuelta{
+    animation: vuelta 1s ;
+    animation-fill-mode: forwards;
+}
+
+@keyframes salida {
+    0%{
+        top: -500px;
+    } 
+    100%{
+        top: 200px;
+    }  
+}
+
+@keyframes vuelta {
+    0%{
+        top: 200px;
+    } 
+    100%{
+        top: -500px;
+    }  
+}

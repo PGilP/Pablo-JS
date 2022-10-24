@@ -11,65 +11,21 @@
     <h1>Alumnos de la clase</h1>
 
     <div class="containerCards">
-        <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div>
-        <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div>
-        <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div>
-        <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div>
-        <!-- <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div>
-        <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div>
-        <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div>
-        <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div>
-        <div class="alumnoCard">
-            <h2 class="nombre">Maria Gonzalez</h2>
-            <p>Edad</p>
-            <p class="edad">23</p>
-        </div> -->
-
     </div>
 
-    <div class="formCreacionAlumno">
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre">
-
-        <label for="nombre">Apellidos</label>
-        <input type="text" name="apellidos" id="apellidos">
-        
-        <label for="anioNac">Año de nacimiento</label>
-        <input type="number" name="anioNac" id="anioNac">
-
-        <div id="boton">Guardar</button>
+    <div class="containerForm">
+        <form action="#" class="formCreacionAlumno">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" required="required">
+    
+            <label for="apellidos">Apellidos</label>
+            <input type="text" name="apellidos" id="apellidos" required="required">
+            
+            <label for="anioNac">Año de nacimiento</label>
+            <input type="number" name="anioNac" id="anioNac" required="required">
+    
+            <input type="submit" value="Guardar" id="boton">
+        </form>
     </div>
     
     <script src="app.js"></script>

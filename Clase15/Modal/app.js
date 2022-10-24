@@ -5,6 +5,26 @@ let nodoContainer = document.querySelector( '.container' );
 let nodoAbrir     = document.querySelector( '.openModal' );
 let nodoCerrar    = document.querySelector( '#cerrar' );
 
+
+document.querySelector('.modal').addEventListener('animationend', function(event){
+
+    if(event.animationName === 'salida'){
+        console.log('salida');
+    }else{
+        console.log('vuelta');
+    }
+});
+
+let functionCerrar = function(){
+    nodoAbrir.style.zIndex = "100";
+
+    nodoContainer.classList.toggle('difuminado');
+
+    nodoModal.classList.remove('salida');
+    nodoModal.classList.add('vuelta');
+};
+
+
 nodoAbrir.addEventListener( 'click' , function(){
 
     nodoAbrir.style.zIndex = "-100";
@@ -13,15 +33,15 @@ nodoAbrir.addEventListener( 'click' , function(){
 
     nodoModal.classList.remove('vuelta');
     nodoModal.classList.add('salida');
-});
 
-nodoCerrar.addEventListener( 'click' , function(){
-
-    nodoAbrir.style.zIndex = "100";
-
-    nodoContainer.classList.toggle('difuminado');
-
-    nodoModal.classList.remove('salida');
-    nodoModal.classList.add('vuelta');
     
 });
+
+nodoCerrar.addEventListener( 'click' , functionCerrar);
+nodoContainer.addEventListener( 'click' , functionCerrar);
+
+function displayContainer(){
+    setTimeout(function(){
+
+    },);
+}

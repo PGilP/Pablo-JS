@@ -1,0 +1,86 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .containerBotones{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.containerImages{
+    min-width: 300px;
+    max-width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.containerImages .imageWrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    width: 300px;
+    aspect-ratio: 2/1.5;
+    background-color: lightblue;
+    overflow: hidden;
+}
+
+.containerImages .imageWrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.containerImages .imageWrapper:hover{
+    opacity: 0.9;
+}
+
+
+.containerImages .imageWrapper:hover::after{
+    content: 'Ver';
+    position: absolute;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+
+.lightBox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    scroll-behavior: none;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.lightBox img{
+    width: 50%;
+    aspect-ratio: 2/1.5;
+    object-fit: cover;
+}

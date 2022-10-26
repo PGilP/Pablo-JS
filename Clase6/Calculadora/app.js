@@ -19,7 +19,7 @@ function construirNumero(str){
 }
 
 function operar(operacion){
-    debugger;
+    
     contadorOperaciones++;
     console.log('Antes de asignar: ' ,'operacion-->',operacion, '  operacionActual-->',operacionActual);
     
@@ -66,7 +66,7 @@ function elegirOperandoOperador(){
 }
 
 function ejecutarOperacion(operacion){
-    debugger;
+    
     console.log('Operacion que voy a ejecutar-->', operacion);
     switch (operacion) {
         case 'sumar':

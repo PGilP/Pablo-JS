@@ -5,6 +5,7 @@
 
 *{
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body{
@@ -36,15 +37,28 @@ body{
     justify-content: center;
 }
 
-.containerGame .tablero {
+.containerGame .tablero{
     width: 50%;
     aspect-ratio: 1/1;
     display: grid;
+    grid-gap: 10px 10px;
+}
+
+.containerGame .tablero.tresRaya {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 10px 10px;
-  }
-  
+}
+
+.containerGame .tablero.cuatroRaya{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.containerGame .tablero.sieteRaya{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
 .containerGame .tablero div {
     display: flex;
     align-items: center;

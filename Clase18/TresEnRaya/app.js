@@ -12,18 +12,13 @@ let eventoBoton = function(){
     }
 }
 
-
 let changeClassPlayer = document.querySelectorAll('.color');
 let nodoPlayerMoving  = document.querySelector('.playerMoving');
 let player1           = 'Jugador 1';
 let player2           = 'Jugador 2';
-let tipoJuego         = 3;
+let tipoJuego         = 7;
 let turno             = 0; // 0 --> Primer jugador  ^^^^^ 1 --> Segundo jugador
-let estadoTablero     = [
-                          [ '' , '' , '' ] ,
-                          [ '' , '' , '' ] ,
-                          [ '' , '' , '' ]
-                        ];
+let estadoTablero;
 
 let nodoTablero = document.querySelector('.tablero');
 
@@ -59,14 +54,18 @@ function generarTablero(tipoJuego) {
     generarColumnas(tipoJuego);
 }
 function generarColumnas(){
+    estadoTablero = new Array();
     for (let c = 0; c < tipoJuego; c++) {
+        
         generarFilas(c);
     }
 }
 
 
 function generarFilas(c){
+    estadoTablero[c] = new Array();
     for (let f = 0; f < tipoJuego; f++) {
+        estadoTablero[c][f] = '';
         let divPosicion = document.createElement('div');
         divPosicion.classList.add('posicion');
         divPosicion.id = String(c)+String(f);
@@ -89,9 +88,8 @@ function pintaVictoria(){
 function actualizaEstadoTablero(posicion){
     let fila = posicion.charAt(0);
     let columna = posicion.charAt(1);
-    
+    console.log('fila-->',fila,'columna-->',columna);
     if(turno === 0){
-        console.log('primerTurno');
         estadoTablero[fila][columna] = 'O';
         turno++;
         nodoPlayerMoving.innerHTML = `<h1>Juega ${player2}</h1>`;
@@ -100,7 +98,6 @@ function actualizaEstadoTablero(posicion){
             element.classList.add('player2');
         });
     }else if(turno === 1){
-        console.log('segundoTurno');
         estadoTablero[fila][columna] = 'X';
         turno--;
         nodoPlayerMoving.innerHTML = `<h1>Juega ${player1}</h1>`;
@@ -122,14 +119,15 @@ function pinta(img) {
 function checkWin(){
     let result = false;
     if(result === false){
-        result = comprobarDerecha(estadoTablero) || comprobarAbajo(estadoTablero) || comprobarDiagonal(estadoTablero);
-        console.log(result);
+        result = comprobarDerecha(estadoTablero) || comprobarAbajo(estadoTablero) || comprobarDiagonalDerecha(estadoTablero) || comprobarDiagonalIzquierda(estadoTablero);
     }
     return result;
-    }
+}
     
 function comprobarDerecha(arr){
+
     for (let i = 0; i < arr.length; i++) {
+
         for (let j = 0; j < arr[i].length; j++) {
 
             let comprueba = arr[i][j]   !== '' &&
@@ -145,32 +143,16 @@ function comprobarDerecha(arr){
 }
 
 function comprobarAbajo(arr){
-        
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < (arr[i].length-2); j++) {
 
+    for (let i = 0; i < (arr.length-2); i++) {
+
+        
+        for (let j = 0; j < (arr[i].length); j++) {
+                        
             let comprueba = arr[i][j]   !== '' &&
                             arr[i][j]   === arr[i+1][j] && 
                             arr[i+1][j] === arr[i+2][j];
-
-            if(comprueba){
-            return true;
-            }
-        }
-    }
-    return false;
-}
-
-
-function comprobarDiagonal(arr){
-        
-    for (let i = 0; i < (arr.length-2); i++) {
-        console.log('primerArray-->',arr[i].length);
-        for (let j = 0; j < (arr[i].length-2); j++) {
             
-            let comprueba = arr[i][j]     !== '' &&
-                            arr[i][j]     === arr[i+1][j+1] && 
-                            arr[i+1][j+1] === arr[i+2][j+2] 
 
             if(comprueba){
                 return true;
@@ -179,6 +161,53 @@ function comprobarDiagonal(arr){
     }
     return false;
 }
+
+
+function comprobarDiagonalDerecha(arr){
+    for (let i = 0; i < (arr.length-2); i++) {
+
+
+        for (let j = 0; j < (arr[i].length-2); j++) {
+
+            
+            let comprueba = arr[i][j]     !== '' &&
+                            arr[i][j]     === arr[i+1][j+1] && 
+                            arr[i+1][j+1] === arr[i+2][j+2];
+
+            if(comprueba){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function comprobarDiagonalIzquierda(arr){
+
+    for (let i = 0; i < (arr.length-2) ; i++) {
+
+        for (let j = (arr[i].length-1); j >= 2; j--) {
+
+
+            console.log('i-->',i);
+            console.log('j-->',j);
+            console.log('----');
+            
+
+            let comprueba = arr[i][j]     !== '' &&
+                            arr[i][j]     === arr[i+1][j-1] && 
+                            arr[i+1][j-1] === arr[i+2][j-2];
+
+            if(comprueba){
+                return true;
+            }
+        }
+    }
+    console.log('^^^');
+    return false;
+}
+
+
 
 function resetearJuego(){
     nodoTablero.innerHTML = '';

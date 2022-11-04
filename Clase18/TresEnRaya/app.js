@@ -51,16 +51,14 @@ function filtraJuego(tipoJuego){
 //Generacion tablero
 
 function generarTablero(tipoJuego) {
+    estadoTablero = new Array();
     generarColumnas(tipoJuego);
 }
 function generarColumnas(){
-    estadoTablero = new Array();
     for (let c = 0; c < tipoJuego; c++) {
-        
         generarFilas(c);
     }
 }
-
 
 function generarFilas(c){
     estadoTablero[c] = new Array();
@@ -76,7 +74,6 @@ function generarFilas(c){
     }
 }
 
-
 function pintaVictoria(){
     let listPosicion = document.querySelectorAll('.posicion');
     listPosicion.forEach(element => {
@@ -88,7 +85,6 @@ function pintaVictoria(){
 function actualizaEstadoTablero(posicion){
     let fila = posicion.charAt(0);
     let columna = posicion.charAt(1);
-    console.log('fila-->',fila,'columna-->',columna);
     if(turno === 0){
         estadoTablero[fila][columna] = 'O';
         turno++;
@@ -117,97 +113,65 @@ function pinta(img) {
 }
 
 function checkWin(){
-    let result = false;
-    if(result === false){
-        result = comprobarDerecha(estadoTablero) || comprobarAbajo(estadoTablero) || comprobarDiagonalDerecha(estadoTablero) || comprobarDiagonalIzquierda(estadoTablero);
+    
+    for (let i = 0; i < estadoTablero.length; i++) {
+        for (let j = 0; j < estadoTablero[i].length; j++) {
+            if(estadoTablero[i][j]   !== ''){
+                return  comprobarDerecha(i,j)         || comprobarAbajo(i,j) || 
+                        comprobarDiagonalDerecha(i,j) || comprobarDiagonalIzquierda(i,j);
+            }
+        }
     }
-    return result;
 }
     
-function comprobarDerecha(arr){
-
-    for (let i = 0; i < arr.length; i++) {
-
-        for (let j = 0; j < arr[i].length; j++) {
-
-            let comprueba = arr[i][j]   !== '' &&
-                            arr[i][j]   === arr[i][j+1] && 
-                            arr[i][j+1] === arr[i][j+2];
-
-            if(comprueba){
-                return true;
-            }
-        }
+function comprobarDerecha(fila,columna){
+    console.log(estadoTablero);
+    let ancho = (estadoTablero[fila].length-1);
+    if( ancho - columna >= 2 ){
+        return estadoTablero[fila][columna]   === estadoTablero[fila][columna+1] && 
+               estadoTablero[fila][columna+1] === estadoTablero[fila][columna+2];
     }
     return false;
 }
 
-function comprobarAbajo(arr){
+function comprobarDiagonalDerecha(fila,columna){
 
-    for (let i = 0; i < (arr.length-2); i++) {
+    let alto = (estadoTablero.length-1);
+    let ancho = (estadoTablero[fila].length-1);
+    
+    if(alto - fila >= 2 &&
+       ancho - columna >= 2 ){
 
+        return estadoTablero[fila][columna]     === estadoTablero[fila+1][columna+1] && 
+               estadoTablero[fila+1][columna+1] === estadoTablero[fila+2][columna+2];
+    }
+    return false;
+}
+
+
+function comprobarAbajo(fila,columna){
+    let alto = (estadoTablero.length-1);
+    if( alto - fila >= 2 ){
+        return estadoTablero[fila][columna]   === estadoTablero[fila+1][columna] && 
+                        estadoTablero[fila+1][columna] === estadoTablero[fila+2][columna];
+    }
+    return false;
+}
+
+function comprobarDiagonalIzquierda(fila,columna){
+    console.log('fila-->',fila,'columna-->',columna);
+    let alto = (estadoTablero.length-1);
+    if( (columna - 2 >= 0) &&
+        (alto - fila >= 2) ){
         
-        for (let j = 0; j < (arr[i].length); j++) {
-                        
-            let comprueba = arr[i][j]   !== '' &&
-                            arr[i][j]   === arr[i+1][j] && 
-                            arr[i+1][j] === arr[i+2][j];
-            
-
-            if(comprueba){
-                return true;
-            }
-        }
+        console.log('entro a comprobar');
+        return  (estadoTablero[fila][columna]     === estadoTablero[fila+1][columna-1] && 
+                estadoTablero[fila+1][columna-1] === estadoTablero[fila+2][columna-2]);
+    
     }
     return false;
+
 }
-
-
-function comprobarDiagonalDerecha(arr){
-    for (let i = 0; i < (arr.length-2); i++) {
-
-
-        for (let j = 0; j < (arr[i].length-2); j++) {
-
-            
-            let comprueba = arr[i][j]     !== '' &&
-                            arr[i][j]     === arr[i+1][j+1] && 
-                            arr[i+1][j+1] === arr[i+2][j+2];
-
-            if(comprueba){
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-function comprobarDiagonalIzquierda(arr){
-
-    for (let i = 0; i < (arr.length-2) ; i++) {
-
-        for (let j = (arr[i].length-1); j >= 2; j--) {
-
-
-            console.log('i-->',i);
-            console.log('j-->',j);
-            console.log('----');
-            
-
-            let comprueba = arr[i][j]     !== '' &&
-                            arr[i][j]     === arr[i+1][j-1] && 
-                            arr[i+1][j-1] === arr[i+2][j-2];
-
-            if(comprueba){
-                return true;
-            }
-        }
-    }
-    console.log('^^^');
-    return false;
-}
-
-
 
 function resetearJuego(){
     nodoTablero.innerHTML = '';

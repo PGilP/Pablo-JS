@@ -1,0 +1,93 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .actions{
+    display: flex;
+    flex-direction: row;
+}
+
+.container .actions * {
+    margin: 5px;
+}
+
+.container .actions div{
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.actions input{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.actions .boton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    cursor: pointer;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.actions .boton:hover{
+    box-shadow: 3px 3px 5px lightgray;
+    font-weight: bold;
+}
+
+.actions .boton.disabled{
+    font-weight: normal;
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.participantes .person{
+    text-align: center;
+    width: 200px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.participantes .person.waiting{
+    color: white;
+    background-color: orange;
+    opacity: 0.6;
+}
+
+.participantes .person.winner{
+    background-color: orange;
+    color: white;
+}
+
+.participantes .person.waiting{
+    animation-name: example;
+    animation-duration: 0.1s;
+}
+
+@keyframes example {
+    0%{
+        opacity: 0.5;
+    }
+    100% { 
+        opacity: 1;
+    }
+}

@@ -60,3 +60,27 @@ body{
     cursor: not-allowed;
     box-shadow: none;
 }
+
+.tiemposGuardados{
+    display: flex;
+    flex-direction: column;
+}
+
+.tiemposGuardados .time{
+    display: flex;
+}
+
+.tiemposGuardados .time .value{
+    font-size: 30px;
+}
+
+.tiemposGuardados .time .delete{
+    font-size: 30px;
+    margin-left: 15px;
+    opacity: 0.6;
+}
+
+.tiemposGuardados .time .delete:hover{
+    cursor: pointer;
+    opacity: 1;
+}

@@ -3,35 +3,52 @@ let contadorCaracteres = 0;
 let contadorPalabras = 0;
 
 document.querySelector('#text').addEventListener('input',function(){
-        
-    this.value = this.value.trim();
-    this.value = this.value.replace('.','');
-    this.value = this.value.replace('*','');
-    this.value = this.value.replace(',','');
-    console.log(this.value);
-    
-    let patron = / +/g;
-    console.log(this.value.replace(patron, '*'));
-
-    this.value.split(patron).length;
-
 
     contadorCaracteres = this.value.length;
     document.querySelector('#caracter').innerHTML = `${contadorCaracteres} caracteres`;
 
+    let objResp = limpiaTextoCuentaPalabras(this.value);
     
-    contadorPalabras = calculaPalabras(this.value.trim());
-    document.querySelector('#palabra').innerHTML = (this.value.length === 0) ? '0 palabras' : `${contadorPalabras} palabras`;
+    document.querySelector('#palabra').innerHTML = (this.value.length === 0) ? '0 palabras' : `${objResp.numPalabras} palabras`;
     
-    
-    
-    
-    document.querySelector('#slug').value = this.value.trim();
-})
+    document.querySelector('#slug').value = objResp.texto;
+});
 
-function calculaPalabras(texto){
-    if(texto.length === 0){
-        return 0
-    }
 
+document.querySelector('.mayus').addEventListener('click',function(){
+    document.querySelector('#publi').value = document.querySelector('#publi').value.toUpperCase();
+    
+});
+
+document.querySelector('#publi').addEventListener('input',function(){
+    
+    document.querySelector('#caracterTextarea').innerHTML = `${this.value.length} caracteres`;
+    
+    
+    
+    document.querySelector('#palabraTextarea').innerHTML = (this.value.length === 0) ? '0 palabras' : `${limpiaTextoCuentaPalabras(this.value).numPalabras} palabras`;
+    
+});
+
+
+document.querySelector('.minus').addEventListener('click',function(){
+    document.querySelector('#publi').value = document.querySelector('#publi').value.toLowerCase();
+});
+
+function limpiaTextoCuentaPalabras(texto){
+    texto = texto.trim();
+    texto = texto.replaceAll('.','');
+    texto = texto.replaceAll('*','');
+    texto = texto.replaceAll(',','');
+
+    texto = texto.replaceAll( /(\-+ +)/g, '-');
+    texto = texto.replaceAll( /( +\-+)/g, '-');
+    texto = texto.replaceAll( /(\-+)/g, '-');
+    texto = texto.replaceAll( /( +)/g, '-');
+    texto = texto.replaceAll( /^\-+/g, '');
+    console.log(texto.split('-').length);
+    return {
+            'texto' : texto,
+            'numPalabras' : texto.split('-').length
+        };
 }

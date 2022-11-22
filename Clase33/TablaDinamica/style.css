@@ -1,0 +1,79 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+.filters{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.filters .filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.filters .filter input{
+    width: 150px;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.table{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerTable{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.headerTable div{
+    width: 100%;
+    margin: 0 3px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.bodyTable{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.bodyTable .alumno{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 3px;
+    width: 100%;
+}
+
+.bodyTable .alumno div{
+    width: 100%;
+    margin: 10px 3px;
+    text-align: center;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OYL</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+    <div class="header">
+        <input type="text" name="task" id="task" placeholder="Introduce una tarea">
+        <div id="addTask"><span>+</span></div>
+    </div>
+
+    <div class="hero">
+        <div class="toDoSection">
+            <div class="title">Tareas por hacer</div>
+            <div class="listTasks">
+                <div class="task toDo">
+                    <div class="name">HTML</div>
+                    <div class="actions">
+                        <div class="check">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="delete">
+                            <span class="material-symbols-outlined">delete</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="task toDo">
+                    <div class="name">Comprar un móvil</div>
+                    <div class="actions">
+                        <div class="check">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="delete">
+                            <span class="material-symbols-outlined">delete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+        <div class="doingSection">
+            <div class="title">Tareas en desarrollo</div>
+            <div class="listTasks doing">
+                <div class="task doing">
+                    <div class="name">JS</div>
+                    <div class="actions">
+                        <div class="check">
+                            <span class="material-symbols-outlined">arrow_downward</span>
+                        </div>
+                        <div class="delete">
+                            <span class="material-symbols-outlined">delete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="completeSection">
+            <div class="title">Tareas completadas</div>
+            <div class="listTasks">
+                <div class="task complete">
+                    <div class="name">Romper el móvil</div>
+                    <div class="actions">
+                        <div class="check">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="delete">
+                            <span class="material-symbols-outlined">delete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

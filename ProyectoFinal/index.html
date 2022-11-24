@@ -20,25 +20,29 @@
         <div class="toDoSection">
             <div class="title">Tareas por hacer</div>
             <div class="listTasks">
-                <div class="task toDo">
+                <div class="task toDo" data-reference="1">
                     <div class="name">HTML</div>
                     <div class="actions">
                         <div class="check">
-                            <span class="material-symbols-outlined">check_circle</span>
+                            <span class="material-symbols-outlined">arrow_downward</span>
+                            <div class="tooltipText">Empieza la tarea</div>
                         </div>
                         <div class="delete">
                             <span class="material-symbols-outlined">delete</span>
+                            <div class="tooltipText">Elimina la tarea</div>
                         </div>
                     </div>
                 </div>
-                <div class="task toDo">
+                <div class="task toDo" data-reference="2">
                     <div class="name">Comprar un móvil</div>
                     <div class="actions">
                         <div class="check">
-                            <span class="material-symbols-outlined">check_circle</span>
+                            <span class="material-symbols-outlined">arrow_downward</span>
+                            <div class="tooltipText">Empieza la tarea</div>
                         </div>
                         <div class="delete">
                             <span class="material-symbols-outlined">delete</span>
+                            <div class="tooltipText">Elimina la tarea</div>
                         </div>
                     </div>
                 </div>
@@ -48,15 +52,17 @@
         </div>
         <div class="doingSection">
             <div class="title">Tareas en desarrollo</div>
-            <div class="listTasks doing">
-                <div class="task doing">
+            <div class="listTasks">
+                <div class="task doing"  data-reference="3">
                     <div class="name">JS</div>
                     <div class="actions">
                         <div class="check">
-                            <span class="material-symbols-outlined">arrow_downward</span>
+                            <span class="material-symbols-outlined">check_circle</span>
+                            <div class="tooltipText">Completa la tarea</div>
                         </div>
                         <div class="delete">
                             <span class="material-symbols-outlined">delete</span>
+                            <div class="tooltipText">Elimina la tarea</div>
                         </div>
                     </div>
                 </div>
@@ -66,14 +72,16 @@
         <div class="completeSection">
             <div class="title">Tareas completadas</div>
             <div class="listTasks">
-                <div class="task complete">
+                <div class="task complete" data-reference="4">
                     <div class="name">Romper el móvil</div>
                     <div class="actions">
                         <div class="check">
                             <span class="material-symbols-outlined">check_circle</span>
+                            <div class="tooltipText">Tarea completa</div>
                         </div>
                         <div class="delete">
                             <span class="material-symbols-outlined">delete</span>
+                            <div class="tooltipText">Elimina la tarea</div>
                         </div>
                     </div>
                 </div>
@@ -81,6 +89,7 @@
             <hr>
         </div>
     </div>
+    
     <script src="app.js"></script>
 </body>
 </html>

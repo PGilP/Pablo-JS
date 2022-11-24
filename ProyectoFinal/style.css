@@ -6,7 +6,6 @@
 body{
     position: relative;
     margin: 0;
-    height: 2000vh;
     z-index: -200;
 }
 
@@ -100,22 +99,49 @@ body{
     align-items: center;
 }
 
-.hero .listTasks .task .actions div{
+.hero .listTasks .task .actions > div{
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
 
-.hero .listTasks .task:not(.complete) .actions div.check span:hover{
+
+.hero .listTasks .task .actions div div.tooltipText{
+    cursor: default;
+}
+
+.hero .listTasks .task .actions > div div.tooltipText {
+    display: none;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: relative;
+    left: -66px;
+}
+
+.hero .listTasks .task .actions > div:hover > div.tooltipText{
+    display: block;
+    width: fit-content;
+    height: fit-content;
+}
+
+/* .hero .listTasks .task .actions > div:hover > span.tooltipText{
+    display: block;
+} */
+
+.hero .listTasks .task .actions div.check > span:hover{
     color: green;
 }
+
+.hero .listTasks .task .actions div.delete > span:hover{
+    color: red;
+}
+
 
 .hero .listTasks .task.complete .actions div.check span{
     color: green;
-}
-
-.hero .listTasks .task .actions div.delete span:hover{
-    color: red;
 }
 
 .hero .listTasks .task.complete .name{

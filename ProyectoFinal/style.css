@@ -22,7 +22,7 @@ body{
     background-color: lightblue;
 }
 
-.header input#task{
+.header input#taskName{
     width: 80%;
     padding: 30px;
     font-size: 20px;
@@ -33,7 +33,7 @@ body{
     color: white;
 }
 
-.header #task:focus-visible {
+.header #taskName:focus-visible {
     outline: none;
 }
 
@@ -58,8 +58,12 @@ body{
     left: 15px;
 }
 
-.header #task::placeholder {
+.header #taskName::placeholder {
     color: whitesmoke;
+}
+
+.header #taskName.empty::placeholder {
+    color: red;
 }
 
 .hero{

@@ -47,6 +47,7 @@ elementTaskToDo.classList.add('task', 'toDo');
         let elementDelete = document.createElement('div');
         elementDelete.classList.add('delete');
         elementActions.append(elementDelete);
+        
     elementTaskToDo.append(elementActions);
 
 document.querySelector('.toDoSection .listTasks').append(elementTaskToDo);

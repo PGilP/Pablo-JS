@@ -14,19 +14,12 @@ String.prototype.hashCode = function() {
     return hash;
 }
 
+
 let tasks = {
     toDo:[],
     doing:[],
     complete:[]
 }
-
-/* 
-    *) Local Storage
-    1)Crear elemento task
-    2)Recoger valor input
-
-*/
-
 let functionCheck = function(){
     console.log(this.parentNode.parentNode);
     let nameTask = this.parentNode.parentNode.querySelector('.name').innerText;
@@ -40,7 +33,7 @@ let functionCheck = function(){
         visualDelete(this.parentNode.parentNode);
 
         //Generamos el elemento que pasa al doing
-        createElementModifyTask('doing',elementToDo.name);
+        visualTratementTask('doing',elementToDo.name);
         
     }else if(tasks.doing.find(element => element.name === nameTask)){
 
@@ -53,7 +46,7 @@ let functionCheck = function(){
         visualDelete(this.parentNode.parentNode);
 
         //Generamos el elemento que pasa al doing
-        createElementModifyTask('complete',elementDoing.name);
+        visualTratementTask('complete',elementDoing.name);
 
     }else if(tasks.complete.find(element => element.name === nameTask)){
 
@@ -66,11 +59,12 @@ let functionCheck = function(){
         visualDelete(this.parentNode.parentNode);
 
         //Generamos el elemento que pasa al doing
-        createElementModifyTask('doing',elementComplete.name);
+        visualTratementTask('doing',elementComplete.name);
 
     }
-}
 
+    localStorage.setItem('tasks',JSON.stringify(tasks));
+}
 let functionDelete = function(){
     console.log(this.parentNode.parentNode);
     let nameTask = this.parentNode.parentNode.querySelector('.name').innerText;
@@ -82,17 +76,11 @@ let functionDelete = function(){
         tasks.complete = tasks.complete.filter((item) => item.name !== nameTask);
     }
     console.log(tasks);
+    localStorage.setItem('tasks',JSON.stringify(tasks));
     visualDelete(this.parentNode.parentNode);
 }
 
-
-document.querySelector('#taskName').addEventListener('input',function(){
-    document.querySelector('#taskName').classList.remove('empty');
-    document.querySelector('#taskName').placeholder = 'Introduce una tarea';
-    this.value = this.value.replace(/^ /,'');
-});
-
-document.querySelector('#addTask').addEventListener('click',function(){
+let functionCreateTask = function(){
     let nameTask = document.querySelector('#taskName').value.replace(/ +/g,' ');
     if(nameTask !== '' && 
       !tasks.toDo    .find(element => element.name === nameTask) &&
@@ -100,24 +88,54 @@ document.querySelector('#addTask').addEventListener('click',function(){
       !tasks.complete.find(element => element.name === nameTask)){
 
         document.querySelector('#taskName').value = '';
-        createElementModifyTask('toDo',nameTask);
+        visualTratementTask('toDo',nameTask);
         let newTask = {
             name : nameTask,
             hash : nameTask.hashCode()
         };
         tasks.toDo.push(newTask);
-        console.log(tasks.toDo);
+        localStorage.setItem('tasks',JSON.stringify(tasks));
     }else{
         document.querySelector('#taskName').value = '';
         document.querySelector('#taskName').classList.add('empty');
         document.querySelector('#taskName').placeholder = 'Este campo no puede estar vacío, ni existir previamente';
     }
+}
+
+if(localStorage.getItem('tasks')){
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    tasks.toDo.forEach(element => {
+        console.log(element.name);
+        visualTratementTask('toDo',element.name);
+    });
+
+    tasks.doing.forEach(element => {
+        console.log(element.name);
+        visualTratementTask('doing',element.name);
+    });
+
+    tasks.complete.forEach(element => {
+        console.log(element.name);
+        visualTratementTask('complete',element.name);
+    });
+}
+
+document.querySelector('#taskName').addEventListener('input',function(){
+    document.querySelector('#taskName').classList.remove('empty');
+    document.querySelector('#taskName').placeholder = 'Introduce una tarea';
+    this.value = this.value.replace(/^ /,'');
 });
+
+document.querySelector('#addTask').addEventListener('click',functionCreateTask);
+
+//No es aqui
+document.querySelector('#addTask').addEventListener('keypress',functionCreateTask);
+
 
 
 //Crear TAREA
 
-function createElementModifyTask(state,taskName){
+function visualTratementTask(state,taskName){
     let elementTask = document.createElement('div');
     elementTask.classList.add('task', state);
     //Falta crear data-reference

@@ -12,79 +12,31 @@
 </head>
 <body>
     <div class="header">
-        <input type="text" name="taskName" id="taskName" placeholder="Introduce una tarea" >
+        <input type="text" name="taskName" id="taskName" placeholder="Introduce una tarea">
+        <div class="selectState">
+            <select name="select">
+                <option value="toDo" selected>Por hacer</option>
+                <option value="doing" >En desarrollo</option>
+                <option value="complete">Completada</option>
+              </select>
+        </div>
         <div id="addTask"><span>+</span></div>
     </div>
 
     <div class="hero">
         <div class="toDoSection">
             <div class="title">Tareas por hacer</div>
-            <div class="listTasks">
-                <!-- <div class="task toDo">
-                    <div class="name">HTML</div>
-                    <div class="actions">
-                        <div class="check">
-                            <span class="material-symbols-outlined">arrow_downward</span>
-                            <div class="tooltipText">Empieza la tarea</div>
-                        </div>
-                        <div class="delete">
-                            <span class="material-symbols-outlined">delete</span>
-                            <div class="tooltipText">Elimina la tarea</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="task toDo">
-                    <div class="name">Comprar un móvil</div>
-                    <div class="actions">
-                        <div class="check">
-                            <span class="material-symbols-outlined">arrow_downward</span>
-                            <div class="tooltipText">Empieza la tarea</div>
-                        </div>
-                        <div class="delete">
-                            <span class="material-symbols-outlined">delete</span>
-                            <div class="tooltipText">Elimina la tarea</div>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
+            <div class="listTasks"></div>
             <hr>
         </div>
         <div class="doingSection">
             <div class="title">Tareas en desarrollo</div>
-            <div class="listTasks">
-                <!-- <div class="task doing">
-                    <div class="name">JS</div>
-                    <div class="actions">
-                        <div class="check">
-                            <span class="material-symbols-outlined">check_circle</span>
-                            <div class="tooltipText">Completa la tarea</div>
-                        </div>
-                        <div class="delete">
-                            <span class="material-symbols-outlined">delete</span>
-                            <div class="tooltipText">Elimina la tarea</div>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
+            <div class="listTasks"></div>
             <hr>
         </div>
         <div class="completeSection">
             <div class="title">Tareas completadas</div>
-            <div class="listTasks">
-                <!-- <div class="task complete">
-                    <div class="name">Romper el móvil</div>
-                    <div class="actions">
-                        <div class="check">
-                            <span class="material-symbols-outlined">check_circle</span>
-                            <div class="tooltipText">Tarea completa</div>
-                        </div>
-                        <div class="delete">
-                            <span class="material-symbols-outlined">delete</span>
-                            <div class="tooltipText">Elimina la tarea</div>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
+            <div class="listTasks"></div>
             <hr>
         </div>
     </div>

@@ -1,5 +1,11 @@
 'use strict'
 
+let tasks = {
+    toDo:[],
+    doing:[],
+    complete:[]
+}
+
 //Metodo para obtener un hash para cada tarea
 String.prototype.hashCode = function() {
     var hash = 0,
@@ -13,22 +19,17 @@ String.prototype.hashCode = function() {
     return hash;
 }
 
-let tasks = {
-    toDo:[],
-    doing:[],
-    complete:[]
-}
-
 let functionCheck = function(){
-    let task = this.closest('.task');
-    let nameTask = task.querySelector('.name').innerText;
+    let task      = this.closest('.task');
+    let nameTask  = task.querySelector('.name').innerText;
+    let stateTask = task.getAttribute('state');
 
-    if(tasks.toDo.find(element => element.name === nameTask)){
-        filterTasks('toDo','doing');        
-    }else if(tasks.doing.find(element => element.name === nameTask)){
-        filterTasks('doing','complete');
-    }else if(tasks.complete.find(element => element.name === nameTask)){
-        filterTasks('complete','doing');
+    if(stateTask === 'toDo'){
+        filterTasks(stateTask,'doing');
+    }else if(stateTask === 'doing'){
+        filterTasks(stateTask,'complete');
+    }else if(stateTask === 'complete'){
+        filterTasks(stateTask,'doing');
     }
 
     function filterTasks(arrFind,arrAdd){
@@ -40,40 +41,49 @@ let functionCheck = function(){
         visualDelete(task);
 
         visualTratementTask(arrAdd,element.name);
-
     }
-
     localStorage.setItem('tasks',JSON.stringify(tasks));
 }
+
 let functionDelete = function(){
-    let task = this.closest('.task');
-    let nameTask = task.querySelector('.name').innerText;
-    if(tasks.toDo.find(element => element.name === nameTask)){
-        tasks.toDo = tasks.toDo.filter((item) => item.name !== nameTask);
-    }else if(tasks.doing.find(element => element.name === nameTask)){
-        tasks.doing = tasks.doing.filter((item) => item.name !== nameTask);
-    }else if(tasks.complete.find(element => element.name === nameTask)){
-        tasks.complete = tasks.complete.filter((item) => item.name !== nameTask);
+    let task      = this.closest('.task');
+    let nameTask  = task.querySelector('.name').innerText;
+    let stateTask = task.getAttribute('state');
+    if(tasks[stateTask].find(element => element.name === nameTask)){
+        tasks[stateTask] = tasks[stateTask].filter((item) => item.name !== nameTask);
     }
-    console.log(tasks);
-    localStorage.setItem('tasks',JSON.stringify(tasks));
     visualDelete(task);
+    localStorage.setItem('tasks',JSON.stringify(tasks));
+}
+
+if(localStorage.getItem('tasks')){
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    tasks.toDo.forEach(element => {
+        visualTratementTask('toDo',element.name);
+    });
+    tasks.doing.forEach(element => {
+        visualTratementTask('doing',element.name);
+    });
+    tasks.complete.forEach(element => {
+        visualTratementTask('complete',element.name);
+    });
 }
 
 let functionCreateTask = function(){
-    let nameTask = document.querySelector('#taskName').value.replace(/ +/g,' ');
-    if(nameTask !== '' && 
-      !tasks.toDo    .find(element => element.name === nameTask) &&
-      !tasks.doing   .find(element => element.name === nameTask) &&
-      !tasks.complete.find(element => element.name === nameTask)){
+    let nameNewTask  = document.querySelector('#taskName').value.replace(/ +/g,' ');
+    let stateNewTask = document.querySelector('#stateNewTask').value;
+    if(nameNewTask !== '' && 
+      !tasks.toDo    .find(element => element.name === nameNewTask) &&
+      !tasks.doing   .find(element => element.name === nameNewTask) &&
+      !tasks.complete.find(element => element.name === nameNewTask)){
 
         document.querySelector('#taskName').value = '';
-        visualTratementTask('toDo',nameTask);
         let newTask = {
-            name : nameTask,
-            hash : nameTask.hashCode()
+            name : nameNewTask,
+            hash : nameNewTask.hashCode()
         };
-        tasks.toDo.push(newTask);
+        tasks[stateNewTask].push(newTask);
+        visualTratementTask(stateNewTask,nameNewTask);
         localStorage.setItem('tasks',JSON.stringify(tasks));
     }else{
         document.querySelector('#taskName').value = '';
@@ -85,37 +95,22 @@ let functionCreateTask = function(){
 document.querySelector('#taskName').addEventListener('input',function(){
     document.querySelector('#taskName').classList.remove('empty');
     document.querySelector('#taskName').placeholder = 'Introduce una tarea';
-    this.value = this.value.replace(/^ /,'');
+    this.value = this.value.replace(/^ +/g,'');
+    this.value = this.value.replace(/ {2,}/g,' ');
 });
 
 document.querySelector('#addTask').addEventListener('click',functionCreateTask);
 
 document.querySelector('#taskName').addEventListener('keypress',function(ev){
-    if(ev.key === 'Enter'){
+    if(ev.keyCode === 13){
         functionCreateTask();
     }
 });
 
-if(localStorage.getItem('tasks')){
-    tasks = JSON.parse(localStorage.getItem('tasks'));
-
-    tasks.toDo.forEach(element => {
-        visualTratementTask('toDo',element.name);
-    });
-
-    tasks.doing.forEach(element => {
-        visualTratementTask('doing',element.name);
-    });
-
-    tasks.complete.forEach(element => {
-        visualTratementTask('complete',element.name);
-    });
-}
-
-
 function visualTratementTask(state,taskName){
     let elementTask = document.createElement('div');
     elementTask.classList.add('task', state);
+    elementTask.setAttribute('state',state)
     let elementName = document.createElement('div');
     elementName.classList.add('name');
     elementName.innerText = taskName;
@@ -124,11 +119,13 @@ function visualTratementTask(state,taskName){
     let elementActions = document.createElement('div');
     elementActions.classList.add('actions');
     
-    //Este elemento es el unico que va a cambiar al pasar a doing
+    let elementCheck;
     if(state === 'toDo'){
-        createCheck('Empieza la tarea','arrow_downward');
+        elementCheck = createCheck('Empieza la tarea','arrow_downward');
+        elementActions.append(elementCheck);
     }else if( state === 'doing' || state === 'complete' ){
-        createCheck('Completa la tarea','check_circle');
+        elementCheck = createCheck('Completa la tarea','check_circle');
+        elementActions.append(elementCheck);
     }
 
     let elementDelete = document.createElement('div');
@@ -165,8 +162,7 @@ function visualTratementTask(state,taskName){
         elementCheck.append(elementSpanCheck);
         elementCheck.append(elementTooltipCheck);
 
-        elementActions.append(elementCheck);
-
+        return elementCheck;
     }
 }
 

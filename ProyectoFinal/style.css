@@ -161,10 +161,6 @@ body{
     height: fit-content;
 }
 
-/* .hero .listTasks .task .actions > div:hover > span.tooltipText{
-    display: block;
-} */
-
 .hero .listTasks .task .actions div.check > span:hover{
     color: green;
 }
@@ -174,10 +170,10 @@ body{
 }
 
 
-.hero .listTasks .task.complete .actions div.check span{
+.hero .listTasks .task[state="complete"] .actions div.check span{
     color: green;
 }
 
-.hero .listTasks .task.complete .name{
+.hero .listTasks .task[state="complete"] .name{
     text-decoration: line-through;
 }

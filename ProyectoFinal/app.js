@@ -6,19 +6,6 @@ let tasks = {
     complete:[]
 }
 
-//Metodo para obtener un hash para cada tarea
-String.prototype.hashCode = function() {
-    var hash = 0,
-      i, chr;
-    if (this.length === 0) return hash;
-    for (i = 0; i < this.length; i++) {
-      chr = this.charCodeAt(i);
-      hash = ((hash << 5) - hash) + chr;
-      hash |= 0; // Convert to 32bit integer
-    }
-    return hash;
-}
-
 let functionCheck = function(){
     let task      = this.closest('.task');
     let nameTask  = task.querySelector('.name').innerText;
@@ -33,13 +20,12 @@ let functionCheck = function(){
     }
 
     function filterTasks(arrFind,arrAdd){
-
         let element = tasks[arrFind].find(element => element.name === nameTask);
         tasks[arrAdd].push(element);
         
         tasks[arrFind] = tasks[arrFind].filter((item) => item.name !== nameTask);
+        
         visualDelete(task);
-
         visualTratementTask(arrAdd,element.name);
     }
     localStorage.setItem('tasks',JSON.stringify(tasks));
@@ -49,9 +35,8 @@ let functionDelete = function(){
     let task      = this.closest('.task');
     let nameTask  = task.querySelector('.name').innerText;
     let stateTask = task.getAttribute('state');
-    if(tasks[stateTask].find(element => element.name === nameTask)){
-        tasks[stateTask] = tasks[stateTask].filter((item) => item.name !== nameTask);
-    }
+
+    tasks[stateTask] = tasks[stateTask].filter((item) => item.name !== nameTask);
     visualDelete(task);
     localStorage.setItem('tasks',JSON.stringify(tasks));
 }
@@ -70,7 +55,7 @@ if(localStorage.getItem('tasks')){
 }
 
 let functionCreateTask = function(){
-    let nameNewTask  = document.querySelector('#taskName').value.replace(/ +/g,' ');
+    let nameNewTask  = document.querySelector('#taskName').value.trim();
     let stateNewTask = document.querySelector('#stateNewTask').value;
     if(nameNewTask !== '' && 
       !tasks.toDo    .find(element => element.name === nameNewTask) &&
@@ -79,8 +64,7 @@ let functionCreateTask = function(){
 
         document.querySelector('#taskName').value = '';
         let newTask = {
-            name : nameNewTask,
-            hash : nameNewTask.hashCode()
+            name : nameNewTask.trim()
         };
         tasks[stateNewTask].push(newTask);
         visualTratementTask(stateNewTask,nameNewTask);
@@ -109,7 +93,7 @@ document.querySelector('#taskName').addEventListener('keypress',function(ev){
 
 function visualTratementTask(state,taskName){
     let elementTask = document.createElement('div');
-    elementTask.classList.add('task', state);
+    elementTask.classList.add('task');
     elementTask.setAttribute('state',state)
     let elementName = document.createElement('div');
     elementName.classList.add('name');
@@ -122,11 +106,10 @@ function visualTratementTask(state,taskName){
     let elementCheck;
     if(state === 'toDo'){
         elementCheck = createCheck('Empieza la tarea','arrow_downward');
-        elementActions.append(elementCheck);
     }else if( state === 'doing' || state === 'complete' ){
         elementCheck = createCheck('Completa la tarea','check_circle');
-        elementActions.append(elementCheck);
     }
+    elementActions.append(elementCheck);
 
     let elementDelete = document.createElement('div');
     elementDelete.classList.add('delete');
@@ -148,7 +131,6 @@ function visualTratementTask(state,taskName){
     document.querySelector(`.${state}Section .listTasks`).append(elementTask);
     
     function createCheck(textTooltip,iconSpan){
-
         let elementCheck = document.createElement('div');
         elementCheck.classList.add('check');
         elementCheck.addEventListener('click',functionCheck);

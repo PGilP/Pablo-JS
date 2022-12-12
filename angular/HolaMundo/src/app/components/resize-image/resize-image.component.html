@@ -1,0 +1,20 @@
+<div>
+    <img [src]="url_image+'id/'+id+'/'+ancho+'/'+alto" (error)="errorCarga()" width="{{ancho}}" height="{{alto}}">
+</div>
+<div>
+    <div>
+        Ancho:
+        <button (click)="decreceAncho()">-</button>
+        <button (click)="creceAncho()">+</button>
+    </div>
+
+    <div>
+        Alto:
+        <button (click)="decreceAlto()">-</button>
+        <button (click)="creceAlto()">+</button>
+    </div>
+
+    <div>
+        <button (click)="changeImage()">Random</button>
+    </div>
+</div>

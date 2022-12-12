@@ -1,0 +1,8 @@
+<h1>Contador</h1>
+<h3>{{ contador }}</h3>
+<div class="gridButtons">
+    <button (click)="decrece()">-</button>
+    <button (click)="crece()">+</button>
+</div>
+<h4 *ngIf="contador % 2 === 0">PAR</h4>
+<h4 *ngIf="contador % 2 !== 0">IMPAR</h4>

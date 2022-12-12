@@ -1,0 +1,19 @@
+h1{
+    color: green;
+}
+
+h1,
+h3{
+    text-align: center;
+}
+
+.gridButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.gridButtons button{
+    border: 1px solid gray;
+}

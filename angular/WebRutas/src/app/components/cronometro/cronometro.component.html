@@ -1,0 +1,19 @@
+<div class="crono">
+    <div class="tiempo">
+        <div class="horas">{{hora | formatTime}}</div>
+        <span>:</span>
+        <div class="minutos">{{minuto | formatTime}}</div>
+        <span>:</span>
+        <div class="segundos">{{segundo | formatTime}}</div>
+        <span>:</span>
+        <div class="centesimas">{{centesima | formatTime}}</div>
+    </div>
+    <div class="botonera">
+        <div class="boton" id="start" (click)="iniciarIntervalo(0)">Empezar</div>
+        <div class="boton" id="pause" (click)="pauseCrono()">Parar</div>
+        <div class="boton disabled" id="save">Guardar</div>
+        <div class="boton" id="continue" (click)="continueCrono()">Continuar</div>
+        <div class="boton" id="reset" (click)="resetCrono()">Resetear</div>
+    </div>
+    <div class="tiemposGuardados"></div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="cabecera">
+        <h1>Filtro de imágenes</h1>
+    </div>
+    <div class="containerBotones">
+        <button class="botonFiltro" id="all"    (click)="filter('')">Todos</button>
+        <button class="botonFiltro" id="water"  (click)="filter('water')">Agua</button>
+        <button class="botonFiltro" id="fire"   (click)="filter('fire')">Fuego</button>
+        <button class="botonFiltro" id="ground" (click)="filter('ground')">Tierra</button>
+    </div>
+    <div class="containerImages">
+        <ng-container *ngFor="let imagen of arrayImagenes"> <!-- Elemento sin visualización -->
+            <div (click)="openImage(imagen.src)" class="imageWrapper claseFiltro" *ngIf="comprobarFiltro(imagen.class) || filterState === '' ">
+                <img src="{{imagen.src}}">
+            </div>
+        </ng-container>
+    </div>
+    <div class="lightBox" *ngIf="rutaImgLightbox !== '' " (click)="closeImage()">
+        <img src="{{rutaImgLightbox}}" (click)="dontClose($event)" alt="">
+    </div>
+</div>

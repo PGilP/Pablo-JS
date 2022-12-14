@@ -1,0 +1,13 @@
+<h1>Alumnos</h1>
+
+<input type="text" [(ngModel)]="entradaNombre"><button (click)="add()">Añadir</button>
+-{{entradaNombre}}
+
+<div class="grid">
+    <div *ngFor="let cadaAlumno of alumnos; let i = index" class="alumno">
+        {{i+1}}. {{cadaAlumno.nombre}}
+        <span *ngIf="cadaAlumno.nota < 5">❌</span>
+        <span *ngIf="cadaAlumno.nota >= 5">✅</span>
+        <button *ngIf="cadaAlumno.nota < 5" (click)="aprobar(cadaAlumno)">Aprobar</button>
+    </div>
+</div>

@@ -15,7 +15,7 @@
             </div>
         </ng-container>
     </div>
-    <div class="lightBox" *ngIf="rutaImgLightbox !== '' " (click)="closeImage()">
-        <img src="{{rutaImgLightbox}}" (click)="dontClose($event)" alt="">
+    <div class="lightBox" *ngIf="rutaImgLightbox !== '' " (click)="closeImage($event)">
+        <img class="imageLightBox" src="{{rutaImgLightbox}}"  alt="">
     </div>
 </div>

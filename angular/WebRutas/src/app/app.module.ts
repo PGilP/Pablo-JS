@@ -9,6 +9,7 @@ import { CronometroComponent } from './components/cronometro/cronometro.componen
 import { FormatTimePipe } from './pipes/format-time.pipe';
 import { PaginaAlumnosComponent } from './components/pagina-alumnos/pagina-alumnos.component';
 import { GridImagenesComponent } from './components/grid-imagenes/grid-imagenes.component';
+import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GridImagenesComponent } from './components/grid-imagenes/grid-imagenes.
     CronometroComponent,
     FormatTimePipe,
     PaginaAlumnosComponent,
-    GridImagenesComponent
+    GridImagenesComponent,
+    ToDoListComponent
   ],
   imports: [
     BrowserModule,

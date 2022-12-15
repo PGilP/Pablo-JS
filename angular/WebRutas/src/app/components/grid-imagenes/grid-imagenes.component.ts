@@ -56,12 +56,11 @@ export class GridImagenesComponent implements OnInit {
     this.rutaImgLightbox = rutaImg;
   }
 
-  closeImage(){
-    this.rutaImgLightbox = '';
-  }
-
-  dontClose(evento:Event){
-    evento.stopPropagation();
+  closeImage(evento:Event){
+    let target = <Element>evento.target;
+    if(!target.classList.contains('imageLightBox')){
+      this.rutaImgLightbox = '';
+    }
   }
 
 }

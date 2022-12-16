@@ -22,11 +22,11 @@
                 <div class="name">{{task.name}}</div>
                 <div class="actions">
                     <div class="check">
-                        <span class="material-symbols-outlined">arrow_downward</span>
+                        <span class="material-symbols-outlined" (click)="startTask(task)">arrow_downward</span>
                         <div class="tooltipText">Empieza la tarea</div>
                     </div>
                     <div class="delete">
-                        <span class="material-symbols-outlined">delete</span>
+                        <span class="material-symbols-outlined" (click)="deleteTask(task)">delete</span>
                         <div class="tooltipText">Elimina la tarea</div>
                     </div>
                 </div>

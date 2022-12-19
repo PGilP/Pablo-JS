@@ -1,0 +1,16 @@
+.texto_principal{
+  color:darkgreen;
+}
+
+.par{
+  background-color: lightblue;
+  padding: 10px;
+}
+button{
+  margin: 5px;
+}
+
+.impar{
+  background-color: lightgreen;
+  padding: 10px;
+}

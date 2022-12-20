@@ -1,0 +1,9 @@
+.gridAlumnos{
+    padding: 15px;
+}
+
+.gridAlumnos .alumno{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}

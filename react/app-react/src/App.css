@@ -14,3 +14,7 @@ button{
   background-color: lightgreen;
   padding: 10px;
 }
+
+nav a {
+  margin: 10px;
+}

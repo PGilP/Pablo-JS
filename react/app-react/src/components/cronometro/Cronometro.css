@@ -1,4 +1,4 @@
-/* *{
+*{
     box-sizing: border-box;
     font-family: sans-serif;
 }
@@ -83,4 +83,4 @@ body{
 .tiemposGuardados .time .delete:hover{
     cursor: pointer;
     opacity: 1;
-} */
+}

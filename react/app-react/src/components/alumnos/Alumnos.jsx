@@ -26,7 +26,7 @@ export default function Alumnos (props){
     
     useEffect(()=>{
         console.log('Cambio en STATE ALUMNOS')
-    },[alumnos]/*Sólo detecta los cambios en Alumnos*/);
+    },[alumnos]/*Sólo detecta los cambios en Alumnos o en todas las variables que concatenes*/);
 
     useEffect(()=>{
         console.log('Se ejecuta al principio')
